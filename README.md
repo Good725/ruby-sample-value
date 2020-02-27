@@ -84,33 +84,4 @@ p.x
 # => 3
 ```
 
-Values can copy and replace fields using a hash:
-
-```ruby
-p = Point.with(x: 1, y: -1)
-q = p.with(y: 2)
-# => #<Point x=1, y=2>
-```
-
-Value classes can be converted to a hash, like OpenStruct:
-
-```ruby
-Point.with(x: 1, y: -1).to_h
-# => {:x=>1, :y=>-1}
-```
-
-Values also supports customization of value classes inheriting from `Value.new`:
-
-```ruby
-class Point < Value.new(:x, :y)
-  def to_s
-    "<Point at (#{x}, #{y})>"
-  end
-end
-
-p = Point.new(1, 2)
-p.to_s
-# => "<Point at (1, 2)>"
-```
-
 Values does NOT have all the features of Struct or OpenStruct (nor is it meant to).
